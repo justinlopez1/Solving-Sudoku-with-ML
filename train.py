@@ -7,7 +7,7 @@ net.train()
 
 print("Training on", device)
 
-for epoch in range(epochs):
+for epoch in range(current_epoch, epochs): 
     loss = train_epoch(device, net, optimizer, loss_func, batch_size)
     if (epoch+1) % 100 == 0:
         print("Epoch: {: >8} Loss: {}".format(epoch+1, loss))

@@ -3,6 +3,7 @@ from model import SudokuSolver
 from data import *
 from data_preprocess import generate_board
 from data_preprocess import generate_empty
+from validator import isValidSudoku
 import pickle
 
 def full(data):
@@ -18,7 +19,7 @@ net.eval()
 test_count = 100
 passed = 0
 
-print("Testing on", device)
+print("Testing", fileName, "on", device)
 
 for test_index in range(test_count):
     dataList, target = generate_board()
@@ -38,7 +39,7 @@ for test_index in range(test_count):
                 finalOutput[i][j] = 0
             targetList[i][j] = targetTensor[i][j].max(0, keepdim=True)[1].item()+1
                 
-                
+    guessIndex = 0 
     while not full(finalOutput):
         dataTensor = dataTensor.unsqueeze(0)
         output = net(dataTensor)
@@ -60,10 +61,12 @@ for test_index in range(test_count):
         guess = output[guessI][guessJ].max(0, keepdim=True)[1].item()+1
         finalOutput[guessI][guessJ] = guess
         dataTensor[guessI][guessJ][guess-1] = 1
-    
-    if finalOutput == targetList:
+
+        guessIndex += 1
+   
+    if isValidSudoku(finalOutput):
         passed += 1
         print("Test", test_index, "passed")
-        
+    
 print()
 print("Tests passed:", passed, "/", test_count)

@@ -12,71 +12,66 @@ class SudokuSolver(nn.Module):
         self.layers = nn.Sequential(
             nn.Conv2d(9, 512, 3, padding=1),
             nn.BatchNorm2d(512),
-            nn.Sigmoid(),
+            nn.ReLU(),
             
             nn.Conv2d(512, 512, 3, padding=1),
             nn.BatchNorm2d(512),
-            nn.Sigmoid(),
+            nn.ReLU(),
             
             nn.Conv2d(512, 512, 3, padding=1),
             nn.BatchNorm2d(512),
-            nn.Sigmoid(),
+            nn.ReLU(),
             
             nn.Conv2d(512, 512, 3, padding=1),
             nn.BatchNorm2d(512),
-            nn.Sigmoid(),
+            nn.ReLU(),
         
             nn.Conv2d(512, 512, 3, padding=1),
             nn.BatchNorm2d(512),
-            nn.Sigmoid(),
+            nn.ReLU(),
             
             nn.Conv2d(512, 512, 3, padding=1),
             nn.BatchNorm2d(512),
-            nn.Sigmoid(),
+            nn.ReLU(),
             
             nn.Conv2d(512, 512, 3, padding=1),
             nn.BatchNorm2d(512),
-            nn.Sigmoid(),
+            nn.ReLU(),
             
             nn.Conv2d(512, 512, 3, padding=1),
             nn.BatchNorm2d(512),
-            nn.Sigmoid(),
+            nn.ReLU(),
             
             nn.Conv2d(512, 512, 3, padding=1),
             nn.BatchNorm2d(512),
-            nn.Sigmoid(),
+            nn.ReLU(),
             
             nn.Conv2d(512, 512, 3, padding=1),
             nn.BatchNorm2d(512),
-            nn.Sigmoid(),
+            nn.ReLU(),
             
             nn.Conv2d(512, 512, 3, padding=1),
             nn.BatchNorm2d(512),
-            nn.Sigmoid(),
+            nn.ReLU(),
             
             nn.Conv2d(512, 512, 3, padding=1),
             nn.BatchNorm2d(512),
-            nn.Sigmoid(),
+            nn.ReLU(),
             
             nn.Conv2d(512, 512, 3, padding=1),
             nn.BatchNorm2d(512),
-            nn.Sigmoid(),
+            nn.ReLU(),
             
             nn.Conv2d(512, 512, 3, padding=1),
             nn.BatchNorm2d(512),
-            nn.Sigmoid(),
+            nn.ReLU(),
             
             nn.Conv2d(512, 512, 3, padding=1),
             nn.BatchNorm2d(512),
-            nn.Sigmoid(),
+            nn.ReLU(),
             
             nn.Conv2d(512, 9, 1, padding=0),  
         )
-        
-        
-
-        
-        
         
     def forward(self, x):
         x = self.layers(x)
